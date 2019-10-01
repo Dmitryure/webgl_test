@@ -1,5 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react';
 import * as THREE from 'three'
+import {fragmentShader, vertexShader} from "./Shaders/Shaders";
 
 function App() {
 	const canvasRef = useRef(null)
@@ -12,7 +13,16 @@ function App() {
 		const renderer = new THREE.WebGLRenderer(context)
 		renderer.setSize(window.innerWidth, window.innerHeight)
 		const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-		const material = new THREE.MeshBasicMaterial( { color: 'red' } );
+		const material = new THREE.ShaderMaterial({
+			flatShading: true,
+			side: THREE.DoubleSide,
+			vertexShader,
+			fragmentShader,
+			uniforms: {
+				time: { value: 0 }
+			}
+		})
+		console.log(fragmentShader)
 		const cube = new THREE.Mesh( geometry, material );
 		scene.add(cube)
 		scene.background = new THREE.Color('blue')
