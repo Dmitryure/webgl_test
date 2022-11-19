@@ -6,7 +6,7 @@
     "glslify": "^7.0.0",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
-    "react-scripts": "3.1.2",
+    "react-scripts": "3.4.4",
     "three": "^0.109.0"
   },
   "scripts": {
